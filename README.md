@@ -34,9 +34,9 @@
 
 6. To run, we need two terminal instances. In one cd to the client directory and run:
     ```
-    npm run serve
+    npm run dev
     ```
     In the other one, cd to the server directory and run:
     ```
-    npm run start
+    npm run dev
     ```
