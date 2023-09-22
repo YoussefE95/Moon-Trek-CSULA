@@ -1,7 +1,7 @@
 FROM continuumio/miniconda3
 
 # setup enviroments
-RUN apt update -y && apt upgrade -y && \
+RUN apt update -y && \
     apt install -y tzdata nodejs npm
 
 # setup working dir & copy source code
