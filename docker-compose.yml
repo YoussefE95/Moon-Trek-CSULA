@@ -1,0 +1,22 @@
+
+version: "3"
+services:
+  moontrek-server:
+    build:
+      context: server/
+    image: moontrek-server
+    container_name: moontrek-server
+    # restart: unless-stopped
+    volumes:
+      - "./server/api/jpl:/src/api/jpl/config"
+    ports:
+      - "8888:8888"
+  
+  moontrek-client:
+    build:
+      context: client/
+    image: moontrek-client
+    container_name: moontrek-client
+    # restart: unless-stopped
+    ports:
+      - "5173:5173"

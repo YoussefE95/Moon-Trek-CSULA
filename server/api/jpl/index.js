@@ -1,4 +1,13 @@
-const config = require('./config.json');
+// dynamically load config.json from different location
+// since docker only support mounting a dir from host to container
+// I have to ignore config.json in host machine while building docker img
+// and then mount the whole api/jpl dir to container when I run it
+var config = null;
+try { // normal environment
+    config = require('./config.json');
+} catch (error) { // inside docker container
+    config = require('./config/config.json');
+}
 const axios = require('axios');
 
 const adjustPositions = (positions) => {

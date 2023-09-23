@@ -40,3 +40,54 @@
     ```
     npm run dev
     ```
+
+
+## Run with Docker
+
+1. Configure `config.json` for the server as [follow the step #5 of above instruction](#install)
+
+2. Install [Docker](https://docs.docker.com/engine/install/) & [Docker-Compose](https://docs.docker.com/compose/install/)
+
+3. To run the whole Moon Trek App, you can use Docker-Compose with following commands
+
+build all images, **every time you change something you need to rebuild modified image**
+
+```sh
+docker-compose build
+```
+
+and then, deploy Moon Trek Application
+
+```sh
+docker-compose up -d
+```
+
+4. To run Moon Trek `server` or `client` use following commands
+
+### server
+
+Inside server folder, run
+
+```sh
+docker build -t moontrek-server .
+```
+
+and then run
+
+```sh
+docker run -it --rm -p 8888:8888 -v "$(pwd)/api/jpl:/src/api/jpl/config" --name moontrek-server moontrek-server
+```
+
+### client
+
+Inside client folder, run
+
+```sh
+docker build -t moontrek-client .
+```
+
+and then run
+
+```sh
+docker run -it --rm -p 5173:5173 --name moontrek-client moontrek-client
+```
